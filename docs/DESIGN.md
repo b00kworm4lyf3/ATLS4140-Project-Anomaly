@@ -1,1 +1,1 @@
-# Design Doc for Project Anomaly (Working Titles)
+# Design Doc for Project Anomaly (Working Title)
