@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5gum47v0kmvb"
-path.s3tc="res://.godot/imported/Gem_fat_fat_gem.png-13c3e19c18b3865c959801299c5afb27.s3tc.ctex"
+uid="uid://gniwy1nc2aeq"
+path.s3tc="res://.godot/imported/Vase1_vase1.png-39d921af76493a941c3052048cef4e4d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "5465c4d73d4bdac2ddde3f9bdccf21e2"
+"md5": "0587c29232caa6834e1f3b5e048216d9"
 }
 
 [deps]
 
-source_file="res://Models/Items/Gem_fat_fat_gem.png"
-dest_files=["res://.godot/imported/Gem_fat_fat_gem.png-13c3e19c18b3865c959801299c5afb27.s3tc.ctex"]
+source_file="res://Models/textures/Vase1_vase1.png"
+dest_files=["res://.godot/imported/Vase1_vase1.png-39d921af76493a941c3052048cef4e4d.s3tc.ctex"]
 
 [params]
 

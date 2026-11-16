@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k72icp5hiiss"
-path.s3tc="res://.godot/imported/Gem_Sharp_sharp_gem.png-d98941e63995f075d0a5a0e0cd57fed2.s3tc.ctex"
+uid="uid://dowk7352pnvnj"
+path.s3tc="res://.godot/imported/floor_floor.png-a43e13a3101abb80ed603e2ba992e59d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f4bb07d0b2fbf0d6c2fe1f5f9f2532ce"
+"md5": "1a5c0885040233dad7f59476a25950e1"
 }
 
 [deps]
 
-source_file="res://Models/Items/Gem_Sharp_sharp_gem.png"
-dest_files=["res://.godot/imported/Gem_Sharp_sharp_gem.png-d98941e63995f075d0a5a0e0cd57fed2.s3tc.ctex"]
+source_file="res://Models/textures/floor_floor.png"
+dest_files=["res://.godot/imported/floor_floor.png-a43e13a3101abb80ed603e2ba992e59d.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://Models/Items/floor_floor.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
