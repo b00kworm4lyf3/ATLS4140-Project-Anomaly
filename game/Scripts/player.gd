@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var acceleration := 20.0
 @export var rotation_speed := 12.0
 @export var jump_impulse := 12.0
+@export var inventory_data: InventoryData
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
@@ -16,10 +17,17 @@ var _gravity := -30.0
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: MeshInstance3D = %MeshInstance3D
+#@onready var interact_ray: RayCast3D = $Camera3D/InteractRay
+
+signal toggle_inventory
+
+func _ready() -> void:
+	PlayerManager.player = self
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#if event.is_action_pressed("left_click"):
+		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
@@ -30,6 +38,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	)
 	if is_camera_motion:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
+	
+	if Input.is_action_just_pressed("inventory"):
+		toggle_inventory.emit()
 		
 		
 func _physics_process(delta: float) -> void:
@@ -73,7 +84,8 @@ func _physics_process(delta: float) -> void:
 				#_skin.move()
 			#else:
 				#_skin.idle()
-		
-		
-	
-	
+
+func get_drop_position() -> Vector3:
+	var direction = -_camera_pivot.global_transform.basis.z
+	direction.y = 0.0
+	return global_position + Vector3.UP + direction.normalized() * 6.0
