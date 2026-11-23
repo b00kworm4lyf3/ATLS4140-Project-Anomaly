@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dmgmb0xieun1j"]
+
+[ext_resource type="PackedScene" uid="uid://c38mkdaxd2n25" path="res://Models/Items/Gem_Sharp.glb" id="1_hhw3e"]
+
+[node name="Node" type="Node" unique_id=1155358755]
+
+[node name="Gem_Sharp" parent="." unique_id=1161475337 instance=ExtResource("1_hhw3e")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.28928864, 1.2967658, -0.055165768)

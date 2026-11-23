@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dii08rxfswa4k"]
+
+[ext_resource type="Script" uid="uid://nljumf7sg5vl" path="res://Scripts/pick_up.gd" id="1_xs52m"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a313c"]
+radius = 0.5745275
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bdlqx"]
+
+[node name="PickUp" type="RigidBody3D" unique_id=1301958072]
+collision_layer = 0
+lock_rotation = true
+script = ExtResource("1_xs52m")
+
+[node name="ModelHolder" type="Node3D" parent="." unique_id=894381931]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=323336900]
+shape = SubResource("SphereShape3D_a313c")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1301014678]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=105018330]
+shape = SubResource("SphereShape3D_bdlqx")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
