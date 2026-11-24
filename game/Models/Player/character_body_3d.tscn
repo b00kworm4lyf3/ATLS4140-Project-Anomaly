@@ -1,45 +1,89 @@
 [gd_scene format=3 uid="uid://bqsiydljq2bsj"]
 
-[ext_resource type="Script" uid="uid://dg2emrq3ljmie" path="res://Scripts/player.gd" id="1_g7vea"]
+[ext_resource type="Script" uid="uid://c7cup8dgexdpr" path="res://Scripts/main.gd" id="1_lpxit"]
+[ext_resource type="PackedScene" uid="uid://b6qugb5j7770q" path="res://Models/floor.glb" id="2_bedk4"]
+[ext_resource type="Resource" uid="uid://dtl1gayg6s13u" path="res://test_inv.tres" id="3_gxii5"]
+[ext_resource type="Script" uid="uid://d2f1hl4al2d5d" path="res://Scripts/inventory_interface.gd" id="4_dx5rp"]
+[ext_resource type="PackedScene" uid="uid://b3qccd0jpwe78" path="res://Inventory/inventory.tscn" id="5_f0ovd"]
+[ext_resource type="PackedScene" uid="uid://bvok0wp8d747h" path="res://Inventory/slot.tscn" id="6_5jqlt"]
+[ext_resource type="PackedScene" uid="uid://dii08rxfswa4k" path="res://Models/pick_up/pick_up.tscn" id="7_y47vf"]
+[ext_resource type="PackedScene" uid="uid://cn0wigh8ob2x6" path="res://Models/Items/Coin.glb" id="8_8bbxm"]
+[ext_resource type="Script" uid="uid://d4fqbspmqe5wo" path="res://Scripts/item_data.gd" id="9_8bp4a"]
+[ext_resource type="Texture2D" uid="uid://tc16f874hgt1" path="res://icon.svg" id="10_rfpew"]
+[ext_resource type="Script" uid="uid://crewve37xqu44" path="res://Scripts/slot_data.gd" id="11_8icrw"]
+[ext_resource type="PackedScene" uid="uid://bqsiydljq2bsj" path="res://Models/Player/character_body_3d.tscn" id="12_ew2bk"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_g7vea"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_njov2"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Gradient" id="Gradient_g7vea"]
+[sub_resource type="Sky" id="Sky_2au82"]
+sky_material = SubResource("ProceduralSkyMaterial_njov2")
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jau0d"]
-gradient = SubResource("Gradient_g7vea")
+[sub_resource type="Environment" id="Environment_8tn2x"]
+background_mode = 2
+sky = SubResource("Sky_2au82")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7vea"]
-albedo_texture = SubResource("GradientTexture2D_jau0d")
+[sub_resource type="Resource" id="Resource_d1b21"]
+script = ExtResource("9_8bp4a")
+name = "Coin"
+texture = ExtResource("10_rfpew")
+model = ExtResource("8_8bbxm")
+metadata/_custom_type_script = "uid://d4fqbspmqe5wo"
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a313c"]
-radius = 0.49804688
-height = 1.8811035
+[sub_resource type="Resource" id="Resource_gb1oh"]
+script = ExtResource("11_8icrw")
+item_data = SubResource("Resource_d1b21")
+metadata/_custom_type_script = "uid://crewve37xqu44"
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_tx3ma"]
+[node name="Node3D" type="Node3D" unique_id=1860616680]
+script = ExtResource("1_lpxit")
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1724800339]
-script = ExtResource("1_g7vea")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=922785760]
+environment = SubResource("Environment_8tn2x")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=537763193]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_g7vea")
-surface_material_override/0 = SubResource("StandardMaterial3D_g7vea")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=775511714]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679228625]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0437683, 0)
-shape = SubResource("CapsuleShape3D_a313c")
+[node name="floor" parent="." unique_id=2065933292 instance=ExtResource("2_bedk4")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3.1014223, 0)
 
-[node name="CameraPivot" type="Node3D" parent="." unique_id=1896185423]
-unique_name_in_owner = true
-transform = Transform3D(1.0000002, 0, 0, 0, 0.9999998, 0, 0, 0, 0.99999994, 0, 1.4, 0)
+[node name="Player" parent="." unique_id=1724800339 instance=ExtResource("12_ew2bk")]
+collision_layer = 2
+inventory_data = ExtResource("3_gxii5")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=177641743]
-transform = Transform3D(1.0000002, 0, 0, 0, 0.90630776, 0.42261824, 0, -0.42261827, 0.9063077, 0, 0, 0)
-shape = SubResource("SphereShape3D_tx3ma")
-spring_length = 5.0
+[node name="UI" type="CanvasLayer" parent="." unique_id=524192125]
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1445311647]
-unique_name_in_owner = true
-transform = Transform3D(0.9999996, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0)
+[node name="InventoryInterface" type="Control" parent="UI" unique_id=379751713]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_dx5rp")
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" unique_id=1669501681 instance=ExtResource("5_f0ovd")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" unique_id=1413945710 instance=ExtResource("6_5jqlt")]
+visible = false
+modulate = Color(1, 1, 1, 0.49019608)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="PickUp" parent="." unique_id=1301958072 instance=ExtResource("7_y47vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2553425, 1.2614727, -12.355)
+slot_data = SubResource("Resource_gb1oh")
+
+[connection signal="drop_slot_data" from="UI/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
+[connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_gui_input"]
