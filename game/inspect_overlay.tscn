@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cy8ccn5q8uev2"]
+
+[node name="inspectOverlay" type="CanvasLayer" unique_id=868785865]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1944121641]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=780154053]
+transparent_bg = true
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=2062695232]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=185996453]
+
+[node name="itemPivot" type="Node3D" parent="SubViewport" unique_id=543132397]
+unique_name_in_owner = true
