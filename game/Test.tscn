@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cg5jqrjmr17h8"]
 
 [ext_resource type="PackedScene" uid="uid://bvok0wp8d747h" path="res://Inventory/slot.tscn" id="1_c4vo5"]
+[ext_resource type="Script" uid="uid://bwhcj60a6spkn" path="res://Scripts/test_main.gd" id="1_cqdos"]
 [ext_resource type="PackedScene" uid="uid://dptsgiip0t76p" path="res://Models/Items/floor.glb" id="1_njov2"]
 [ext_resource type="PackedScene" uid="uid://bqsiydljq2bsj" path="res://Models/Player/character_body_3d.tscn" id="2_njov2"]
 [ext_resource type="PackedScene" uid="uid://b3qccd0jpwe78" path="res://Inventory/inventory.tscn" id="2_vwb7u"]
 [ext_resource type="PackedScene" uid="uid://cy8ccn5q8uev2" path="res://inspect_overlay.tscn" id="3_cqdos"]
-[ext_resource type="Resource" uid="uid://c1jec62xxob4o" path="res://test_item.tres" id="4_vwb7u"]
 [ext_resource type="PackedScene" uid="uid://rnxo4in370gt" path="res://inspectable.tscn" id="7_cqdos"]
 [ext_resource type="Resource" uid="uid://m3ek6h25jdf6" path="res://Models/Items/gem_fat.tres" id="8_r6p7k"]
 [ext_resource type="Resource" uid="uid://cqdnllmt3l7si" path="res://Models/Items/gem_sharp.tres" id="9_rc7cs"]
@@ -24,6 +24,7 @@ background_mode = 2
 sky = SubResource("Sky_2au82")
 
 [node name="Node3D" type="Node3D" unique_id=1860616680]
+script = ExtResource("1_cqdos")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=922785760]
 environment = SubResource("Environment_8tn2x")
@@ -44,7 +45,6 @@ offset_bottom = 64.0
 
 [node name="inspectOverlay" parent="." unique_id=868785865 instance=ExtResource("3_cqdos")]
 visible = false
-test_item = ExtResource("4_vwb7u")
 
 [node name="floor" parent="." unique_id=1441279124 instance=ExtResource("1_njov2")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3.1014223, 0)
@@ -60,7 +60,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -34.
 item_data = ExtResource("9_rc7cs")
 
 [node name="Inspectable_Coin" parent="." unique_id=814591530 instance=ExtResource("7_cqdos")]
-transform = Transform3D(0.04182926, 0.9991247, 0, -0.9991247, 0.04182926, 0, 0, 0, 1, -33.563778, 4.7543106, -9.079134)
+transform = Transform3D(0.04182926, 0.9991247, 0, -0.9991247, 0.04182926, 0, 0, 0, 1, -33.563778, 1.5919724, -9.079134)
 item_data = ExtResource("10_cqdos")
 
 [node name="Inspectable_Vase1" parent="." unique_id=534544373 instance=ExtResource("7_cqdos")]

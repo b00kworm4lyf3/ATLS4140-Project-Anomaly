@@ -17,11 +17,11 @@ func _ready() -> void:
     if test_item:
         open.call_deferred(test_item)
 
-func open(item_data: ItemData) -> void:
+func open(item_data: ItemData, view_basis := Basis.IDENTITY) -> void:
     _item_data = item_data
     for child in pivot.get_children():
         child.queue_free()
-    pivot.rotation = Vector3.ZERO
+    pivot.basis = view_basis
     pivot.add_child(item_data.model.instantiate())
     show()
     get_tree().paused = true

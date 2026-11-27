@@ -17,13 +17,15 @@ var _gravity := -30.0
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: MeshInstance3D = %MeshInstance3D
-#@onready var interact_ray: RayCast3D = $Camera3D/InteractRay
+@onready var interact_ray: RayCast3D = %InteractRay
 
 signal toggle_inventory
+signal inspect_req(item_data: ItemData, view_basis: Basis)
 
 func _ready() -> void:
 	PlayerManager.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	interact_ray.add_exception(self)
 
 func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("left_click"):
@@ -41,7 +43,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
-		
+
+	if event.is_action_pressed("left_click") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		var target = interact_ray.get_collider()
+		print("ray hit: ", target) #DEBUG
+		if target is Inspectable:
+			var view_basis: Basis = (_camera.global_basis.inverse() * target.global_basis).orthonormalized()
+			inspect_req.emit(target.item_data, view_basis)
 		
 func _physics_process(delta: float) -> void:
 	_camera_pivot.rotation.x -= _camera_input_direction.y * delta
