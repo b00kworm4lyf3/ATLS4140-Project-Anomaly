@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://rnxo4in370gt"]
+
+[ext_resource type="Script" uid="uid://dlhcvemmjxhyo" path="res://Scripts/inspectable.gd" id="1_ijsnj"]
+
+[node name="Inspectable" type="StaticBody3D" unique_id=1959001064]
+script = ExtResource("1_ijsnj")
